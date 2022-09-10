@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="inherit" elevation="large">
+      <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar>
           <Avatar alt='' src={logo} />
           <Typography
