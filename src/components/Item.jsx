@@ -2,23 +2,24 @@ import {Card, CardMedia, CardContent, Typography, Button, Stack, IconButton} fro
 import {AddShoppingCart} from '@mui/icons-material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import {add} from '../app/features/cartSlice'
+import { useDispatch } from 'react-redux';
 
 const Item = ({product}) => {
+  const dispatch = useDispatch()
+  const name = product.name.split(' ')[1] + " " + product.name.split(' ')[2]
+
   return (
-    <Card sx={{maxWidth: '300px'}}>
+    <Card component='article' sx={{maxWidth: '250px'}}>
       <CardMedia component='img' height={200} image={`https://${product.imageUrl}`} alt={product.name} />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">{product.name}</Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Typography gutterBottom variant="h6" component="div">{name}</Typography>
+        <Typography gutterBottom variant="body2" component="p">{product.name}</Typography>
         <Stack direction='row' justifyContent='space-around' alignItems='center'>
-          <Typography variant="body1" color="text.secondary">{product.price.current.text}</Typography>
-          {/* <Button><FavoriteOutlined /></Button> */}
-          <IconButton aria-label='fav-icon'><FavoriteBorderIcon /></IconButton>
+          <Typography variant="body1" color="text.secondary">Price: {product.price.current.text}</Typography>
+          <IconButton color='error' aria-label='fav-icon'><FavoriteBorderIcon /></IconButton>
         </Stack>
-        <Button startIcon={<AddShoppingCart />} variant='contained' color='primary' sx={{marginTop: '1rem'}} fullWidth>Add to Cart</Button>
+        <Button onClick={() => dispatch(add({id: product.id, name, img: `https://${product.imageUrl}`, price: product.price.current.value}))} startIcon={<AddShoppingCart />} variant='contained' color='primary' sx={{marginTop: '1rem'}} fullWidth>Add to Cart</Button>
       </CardContent>
     </Card>
   )

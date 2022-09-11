@@ -10,7 +10,7 @@ const Category = () => {
   if (status === "success")
     return (
       <Stack sx={{borderRight: '1px solid rgba(0,0,0,0.1)'}}>
-        <Typography variant="h4">Brands</Typography>
+        {/* <Typography variant="h4">Category</Typography> */}
         <Box sx={{
           height: '80vh',
           overflow: 'auto',

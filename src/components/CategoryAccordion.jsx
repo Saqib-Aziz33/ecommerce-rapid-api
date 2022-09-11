@@ -7,11 +7,11 @@ import {
   } from "@mui/material";
   import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
  import { useDispatch } from "react-redux";
+ import {fetchProducts} from '../app/features/productSlice'
   
   const CategoryAccordion = ({category}) => {
     const dispatch = useDispatch()
-    const e = false
-    if(e) dispatch()
+    
     return (
       <Accordion elevation={0} sx={{width: '300px'}}>
         <AccordionSummary
@@ -24,7 +24,7 @@ import {
         <AccordionDetails>
           {
             category.children.map(item => (
-                <Button sx={{display: 'block', width: '100%'}} key={item.link.categoryId} variant="text" onClick={() => console.log(item.link.categoryId)}>{item.content.title}</Button>
+                <Button sx={{display: 'block', width: '100%'}} key={item.link.categoryId} variant="text" onClick={() => dispatch(fetchProducts(item.link.categoryId))}>{item.content.title}</Button>
             ))
           }
         </AccordionDetails>
