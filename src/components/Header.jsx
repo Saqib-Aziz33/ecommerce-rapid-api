@@ -9,11 +9,12 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
 import logo from "../assets/s.a.png";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+  const cart = useSelector(state => state.cart)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -30,7 +31,7 @@ const Header = () => {
           </Typography>
 
           <IconButton aria-label="cart">
-            <Badge badgeContent={4} color="primary">
+            <Badge badgeContent={cart.length} color="primary">
               <ShoppingCartIcon />
               <Typography component='span'>Cart</Typography>
             </Badge>

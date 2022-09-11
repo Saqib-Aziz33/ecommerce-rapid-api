@@ -1,2 +1,6 @@
 export {default as Nav} from './Nav'
 export {default as Header} from './Header'
+export {default as Item} from './Item'
+export {default as Items} from './Items'
+export {default as Category} from './Category'
+export {default as CategoryAccordion} from './CategoryAccordion'
